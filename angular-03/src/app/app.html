@@ -40,3 +40,14 @@
 @else{
   <div class="box box-magenta"></div>
 }
+
+
+<hr>
+
+<h1>for loop</h1>
+
+@for(user of users; track user; let id = $index){
+  <h2>{{id+1}} : {{user}}</h2>
+}
+
+

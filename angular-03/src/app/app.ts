@@ -26,4 +26,7 @@ export class App {
   handleInput(event:Event){
     this.color = Number((event.target as HTMLInputElement).value);
   }
+
+
+  users = ["Gaurav", "Akshita", "Kunal", "Runjeeth"]
 }
