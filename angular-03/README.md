@@ -1,18 +1,54 @@
-## Using `*ngIf` and `else` in Angular
+Angular v17 introduced a new template control flow syntax using `@if`, `@else`, and `@switch`, making conditional rendering more concise and readable.
 
-In Angular templates, you can use the `*ngIf` directive to conditionally display elements. To provide an alternative template when the condition is false, use the `else` keyword.
+### `@if` and `@else`
+
+You can use `@if` to conditionally render content, and `@else` for the alternative case:
 
 ```html
-<div *ngIf="isLoggedIn; else loginPrompt">
+@if (isLoggedIn) {
     Welcome back, user!
-</div>
-<ng-template #loginPrompt>
+} @else {
     Please log in to continue.
-</ng-template>
+}
 ```
 
 - `isLoggedIn` is a boolean property in your component.
 - If `isLoggedIn` is `true`, the welcome message is shown.
-- If `isLoggedIn` is `false`, the content inside the `ng-template` with the reference `loginPrompt` is displayed.
+- If `isLoggedIn` is `false`, the alternative message is displayed.
 
-**Learn more:** [Angular Structural Directives](https://angular.io/guide/structural-directives)
+### `@if` with `else if`
+
+You can chain conditions using `@else if`:
+
+```html
+@if (status === 'admin') {
+    Welcome, Admin!
+} @else if (status === 'user') {
+    Welcome, User!
+} @else {
+    Welcome, Guest!
+}
+```
+
+### `@switch` for Multiple Conditions
+
+For multiple possible values, use `@switch`:
+
+```html
+@switch (status) {
+    @case ('admin') {
+        Welcome, Admin!
+    }
+    @case ('admin') {
+        Welcome, User!
+    }
+    @default {
+        Welcome, Guest!
+    }
+}
+```
+
+- Use `@switch` for cleaner code when checking several values.
+- Use `@if`/`@else` for simple conditional branches.
+
+**Learn more:** [Angular Control Flow Blocks](https://angular.dev/reference/templates/control-flow)
