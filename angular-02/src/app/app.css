@@ -1,0 +1,48 @@
+.count{
+    background-color: grey;
+    border: 1px solid grey;
+    border-radius: 15px;
+    color: black;
+    text-align: center;
+    padding: 10px;
+    font-size: 30px;
+    width: 100px;
+}
+
+.card{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.btn{
+    border: 1px solid black;
+    border-radius: 50%;
+    color: white;
+    padding: 20px;
+    width: 100px;
+    height: 100px;
+    cursor: pointer;
+    margin: 10px;
+}
+
+.increment{
+    background-color: green;
+}
+
+
+.decrement{
+    background-color: red;
+}
+
+
+.reset{
+    background-color: black;
+}
+
+.buttons{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
