@@ -12,13 +12,18 @@ export class App {
 
 
   isDisplay:Boolean = false;
-  state:String = "Show";
   toggle(){
     this.isDisplay = !this.isDisplay;
-    if(this.state== "Show") this.state= "Hide";
-    else if(this.state == "Hide")this.state="Show";
   }
 
 
+  color:number = 1;
 
+  setColor(val:number){
+    this.color = val;
+  }
+
+  handleInput(event:Event){
+    this.color = Number((event.target as HTMLInputElement).value);
+  }
 }

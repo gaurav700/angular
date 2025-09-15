@@ -1,7 +1,6 @@
 
-
 <div>
-  <button (click)="toggle()" class="btn">{{state}} card</button>
+  <button class="btn" (click)="isDisplay = !isDisplay">{{ isDisplay ? 'Hide' : 'Show' }} card</button>
 </div>
 
 @if(isDisplay){
@@ -15,3 +14,29 @@
 </div>
 }
 
+<hr>
+
+<div class="color-buttons">
+  <button class="btn-red" (click)="setColor(1)">red (1)</button>
+  <button class="btn-black" (click)="setColor(2)">black (2)</button>
+  <button class="btn-green" (click)="setColor(3)">green (3)</button>
+  <button class="btn-yellow" (click)="setColor(4)">yellow (4)</button>
+  <input type="text" class="color-input" (input)="handleInput($event)" placeholder="Enter color number">
+</div>
+
+
+@if(color == 1){
+  <div class="box box-red"></div>
+}
+@else if(color == 2){
+  <div class="box box-black"></div>
+}
+@else if(color == 3){
+  <div class="box box-green"></div>
+}
+@else if(color == 4){
+  <div class="box box-yellow"></div>
+}
+@else{
+  <div class="box box-magenta"></div>
+}
