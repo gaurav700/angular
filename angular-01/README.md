@@ -1,59 +1,163 @@
-# Angular01
+# Angular Interpolation
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.3.1.
+## What is Interpolation?
 
-## Development server
+Interpolation in Angular is a technique for embedding expressions within double curly braces `{{ }}` in your HTML templates. It allows you to display dynamic data from your component class directly in the view.
 
-To start a local development server, run:
+## Examples of Interpolation
 
-```bash
-ng serve
+Suppose your component class has a property:
+
+```typescript
+export class AppComponent {
+  title = 'Angular Interpolation Example';
+  user = { name: 'Alice', age: 25 };
+}
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+You can use interpolation in your template as follows:
 
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
-
-```bash
-ng generate component component-name
+```html
+<h1>{{ title }}</h1>
+<p>Hello, {{ user.name }}!</p>
+<p>Your age is {{ user.age }}</p>
+<p>Next year, you will be {{ user.age + 1 }}</p>
 ```
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+This will render:
 
-```bash
-ng generate --help
+```
+Angular Interpolation Example
+Hello, Alice!
+Your age is 25
+Next year, you will be 26
 ```
 
-## Building
+## Limitations of Interpolation
 
-To build the project run:
+- **Only One-Way Binding:** Interpolation only updates the view when the data changes, not vice versa.
+- **Expressions Only:** You can use simple expressions (property access, arithmetic, method calls), but not statements (like assignments or control flow).
+- **No Side Effects:** Interpolation cannot be used to execute code that changes application state.
+- **HTML Context:** Interpolation works only within HTML element content and attribute values, not in property bindings or event bindings.
 
-```bash
-ng build
+**Invalid examples:**
+
+```html
+<!-- Not allowed: assignments or statements -->
+{{ user.age = 30 }} <!-- Invalid -->
+
+<!-- Not allowed: control flow -->
+{{ if (user.age > 18) 'Adult' else 'Minor' }} <!-- Invalid -->
 ```
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+## Summary
 
-## Running unit tests
+Angular interpolation is a simple and powerful way to display dynamic data in your templates, but it is limited to one-way binding and simple expressions.
 
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
+---
 
-```bash
-ng test
+# Components in Angular
+
+## What is a Component?
+
+A component is a fundamental building block of Angular applications. It controls a part of the user interface (UI) and contains the logic and data for that section.
+
+## What is a Component in Angular?
+
+In Angular, a component is a TypeScript class decorated with `@Component`. It defines:
+- The template (HTML) for the UI
+- The logic (TypeScript class)
+- The styles (CSS)
+- Metadata (selector, template, etc.)
+
+## How to Make and Use a Component
+
+1. **Create a Component:**
+   Use Angular CLI:
+   ```sh
+   ng generate component my-component
+   ```
+   Or manually create the files.
+
+2. **Component Files:**
+   - `my-component.component.ts` — TypeScript class and metadata
+   - `my-component.component.html` — Template
+   - `my-component.component.css` — Styles
+   - `my-component.component.spec.ts` — Unit tests
+
+3. **Use a Component:**
+   - Add the component's selector (e.g., `<app-my-component>`) to a template in another component.
+
+## Example
+
+```typescript
+// my-component.component.ts
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-my-component',
+  templateUrl: './my-component.component.html',
+  styleUrls: ['./my-component.component.css']
+})
+export class MyComponent {
+  message = 'Hello from MyComponent!';
+}
 ```
 
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
+```html
+<!-- my-component.component.html -->
+<p>{{ message }}</p>
 ```
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+To use this component, add `<app-my-component></app-my-component>` in another component's template.
 
-## Additional Resources
+---
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+# Function Call on Button Click in Angular
+
+## Define a Function
+
+In your component class, define a function:
+
+```typescript
+export class AppComponent {
+  showMessage() {
+    alert('Button clicked!');
+  }
+}
+```
+
+## Call a Function from a Button
+
+In your template, use Angular's event binding to call the function when the button is clicked:
+
+```html
+<button (click)="showMessage()">Click Me</button>
+```
+
+## Call a Function from Another Function
+
+You can call one function from another inside your component class:
+
+```typescript
+export class AppComponent {
+  showMessage() {
+    alert('Button clicked!');
+  }
+
+  handleClick() {
+    this.showMessage(); // Call another function
+  }
+}
+```
+
+And in your template:
+
+```html
+<button (click)="handleClick()">Click Me</button>
+```
+
+---
+
+
+
