@@ -109,3 +109,40 @@ onClick(event: MouseEvent): void {
     console.log('Button clicked at:', event.clientX, event.clientY);
 }
 ```
+---
+## Template Reference Variables in Angular
+
+Template reference variables allow you to reference DOM elements or Angular components/directives in your template. They are declared using the `#` symbol.
+
+### Declaring a Template Reference Variable
+
+```html
+<input #myInput type="text">
+<button (click)="logValue(myInput.value)">Log Value</button>
+```
+
+In your component:
+
+```typescript
+logValue(value: string): void {
+    console.log('Input value:', value);
+}
+```
+
+### Accessing DOM Elements
+
+You can use the template reference variable to access properties and methods of the DOM element:
+
+```html
+<input #username>
+<button (click)="showLength(username.value.length)">Show Length</button>
+```
+
+### Using with Angular Components
+
+If you assign a template reference variable to an Angular component, you can access its public properties and methods:
+
+```html
+<app-child #childComp></app-child>
+<button (click)="childComp.someMethod()">Call Child Method</button>
+```
