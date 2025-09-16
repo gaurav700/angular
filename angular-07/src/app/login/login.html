@@ -1,0 +1,70 @@
+<div class="login-page">
+  <div class="login-card" role="main" aria-labelledby="login-heading">
+    <div class="brand">
+      <img src="assets/logo.png" alt="Logo" class="logo" />
+      <h1 id="login-heading">Welcome back</h1>
+      <p class="sub">Sign in to your account to continue.</p>
+    </div>
+
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="login-form" novalidate>
+      <label class="field">
+        <span class="label-text">Email</span>
+        <input
+          type="email"
+          formControlName="email"
+          placeholder="you@example.com"
+          aria-describedby="emailError"
+        />
+        <span id="emailError" class="error" *ngIf="email.touched && email.invalid">
+          <span *ngIf="email.errors?.['required']">Email is required.</span>
+          <span *ngIf="email.errors?.['email']">Enter a valid email.</span>
+        </span>
+      </label>
+
+      <label class="field">
+        <span class="label-text">Password</span>
+        <div class="password-row">
+          <input
+            [type]="hidePassword ? 'password' : 'text'"
+            formControlName="password"
+            placeholder="Your password"
+            aria-describedby="passwordError"
+          />
+          <button type="button" class="toggle" (click)="togglePassword()" aria-label="Toggle password visibility">
+            {{ hidePassword ? 'Show' : 'Hide' }}
+          </button>
+        </div>
+
+        <span id="passwordError" class="error" *ngIf="password.touched && password.invalid">
+          <span *ngIf="password.errors?.['required']">Password is required.</span>
+          <span *ngIf="password.errors?.['minlength']">Password must be at least 6 characters.</span>
+        </span>
+      </label>
+
+      <div class="options-row">
+        <label class="remember">
+          <input type="checkbox" formControlName="remember" />
+          Remember me
+        </label>
+
+        <a class="forgot" (click)="onForgot()" role="button" tabindex="0">Forgot password?</a>
+      </div>
+
+      <button class="submit" type="submit" [disabled]="loginForm.invalid">
+        Sign in
+      </button>
+
+      <div class="or">or</div>
+
+      <div class="socials">
+        <button type="button" class="social google" (click)="onSocial('google')">Continue with Google</button>
+        <button type="button" class="social github" (click)="onSocial('github')">Continue with GitHub</button>
+      </div>
+
+      <p class="signup">
+        Don’t have an account?
+        <a routerLink="/register">Create an account</a>
+      </p>
+    </form>
+  </div>
+</div>
