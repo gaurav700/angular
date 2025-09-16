@@ -1,0 +1,64 @@
+<div class="todo-app">
+  <header>
+    <h1>To-Do</h1>
+    <form (submit)="$event.preventDefault(); add()" class="add-form">
+      <input
+        type="text"
+        placeholder="What needs to be done?"
+        [(ngModel)]="newTitle"
+        name="newTitle"
+        (keydown.enter)="$event.preventDefault(); add()"
+        autocomplete="off"
+      />
+      <button type="button" (click)="add()">Add</button>
+    </form>
+  </header>
+
+  <section class="controls">
+    <div class="left">
+      <label>
+        <input type="checkbox" [checked]="remainingCount() === 0 && todos.length > 0"
+               (change)="toggleAll($event.target.checked)">
+        Mark all as {{ remainingCount() === 0 ? 'incomplete' : 'complete' }}
+      </label>
+    </div>
+
+    <div class="filters">
+      <button [class.active]="filter === 'all'" (click)="setFilter('all')">All</button>
+      <button [class.active]="filter === 'active'" (click)="setFilter('active')">Active</button>
+      <button [class.active]="filter === 'completed'" (click)="setFilter('completed')">Completed</button>
+    </div>
+
+    <div class="right">
+      <span>{{ remainingCount() }} left</span>
+      <button class="clear" (click)="clearCompleted()">Clear completed</button>
+    </div>
+  </section>
+
+  <ul class="todo-list">
+    @for(todo of filteredTodos; track todo.id) {
+      <li class="todo-item" [class.completed]="todo.completed">
+        <div class="view">
+          <input class="toggle" type="checkbox" [checked]="todo.completed" (change)="toggle(todo)">
+          <label (dblclick)="startEdit(todo)">{{ todo.title }}</label>
+          <button class="destroy" (click)="remove(todo)" aria-label="Delete">✕</button>
+        </div>
+
+        <!-- edit block -->
+        <div *ngIf="editingId === todo.id" class="edit-row">
+          <input
+            class="edit-input"
+            [(ngModel)]="editBuffer"
+            (keydown.enter)="saveEdit(todo)"
+            (keydown.escape)="cancelEdit()"
+            placeholder="Edit todo"
+            autofocus
+          />
+          <button (click)="saveEdit(todo)">Save</button>
+          <button (click)="cancelEdit()">Cancel</button>
+        </div>
+      </li>
+    }
+  </ul>
+
+</div>
