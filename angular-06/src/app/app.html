@@ -1,0 +1,27 @@
+<div class="users-container">
+  <div class="user-card"
+       *ngFor="let user of users; let i = index; let first = first; let last = last; let odd = odd; let even = even"
+       [class.first-card]="first"
+       [class.last-card]="last"
+       [class.odd-card]="odd"
+       [class.even-card]="even">
+
+    <!-- Show avatar -->
+    <img [src]="user.avatar" [alt]="user.name + ' avatar'">
+
+    <!-- Show index and total -->
+    <h2>{{ i + 1 }} / {{ users.length }} — {{ user.name }}</h2>
+
+    <p><strong>Email:</strong> {{ user.email }}</p>
+    <p><strong>Role:</strong> {{ user.role }}</p>
+
+    <!-- Debug info -->
+    <p class="meta">
+      Index: {{ i }},
+      First: {{ first }},
+      Last: {{ last }},
+      Odd: {{ odd }},
+      Even: {{ even }}
+    </p>
+  </div>
+</div>
