@@ -1,0 +1,49 @@
+<h6>For loop</h6>
+
+<div class="users-container">
+  @for(user of users; track user.id) {
+    <div class="user-card"
+         [class.first-card]="$first"
+         [class.last-card]="$last"
+         [class.odd-card]="$odd"
+         [class.even-card]="$even">
+
+      <!-- Show avatar -->
+      <img [src]="user.avatar" [alt]="user.name + ' avatar'">
+
+      <!-- Show index and total -->
+      <h2>{{ $index + 1 }} / {{ $count }} — {{ user.name }}</h2>
+
+      <p><strong>Email:</strong> {{ user.email }}</p>
+      <p><strong>Role:</strong> {{ user.role }}</p>
+
+      <!-- Debug info -->
+      <p class="meta">
+        Index: {{ $index }},
+        First: {{ $first }},
+        Last: {{ $last }},
+        Odd: {{ $odd }},
+        Even: {{ $even }}
+      </p>
+    </div>
+  }
+</div>
+
+
+
+
+<hr>
+
+<h6>Two Way Binding</h6>
+
+<div class="binding-card">
+  <label for="nameInput">Enter your name</label>
+  <input id="nameInput" type="text" [(ngModel)]="name" placeholder="Type here...">
+
+  <div class="preview">
+    <span>👋 Hello, </span>
+    <strong>{{ name}}</strong>
+  </div>
+</div>
+
+<hr>

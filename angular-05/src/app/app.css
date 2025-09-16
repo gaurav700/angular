@@ -1,0 +1,90 @@
+.users-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 16px;
+  padding: 20px;
+}
+
+
+.user-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+}
+
+.user-card h2 {
+  margin: 0 0 8px;
+  font-size: 18px;
+  color: #2563eb; /* blue accent */
+}
+
+.user-card p {
+  margin: 4px 0;
+  font-size: 14px;
+  color: #374151;
+}
+.user-card img {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 12px;
+  border: 2px solid #e5e7eb;
+}
+.user-card {
+  padding: 16px;
+  border-radius: 12px;
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+/* styling based on context flags */
+.first-card { border: 2px solid #22c55e; }   /* green border for first */
+.last-card  { border: 2px solid #ef4444; }   /* red border for last */
+.odd-card   { background: #f9fafb; }         /* light background for odd */
+.even-card  { background: #ffffff; }
+
+
+.binding-card {
+  max-width: 400px;
+  margin: 16px 0;
+  padding: 16px;
+  border-radius: 12px;
+  background: #f9fafb;
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  font-family: Inter, system-ui, sans-serif;
+}
+
+.binding-card label {
+  font-size: 14px;
+  font-weight: 600;
+  color: #374151;
+}
+
+.binding-card input {
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: 1px solid #d1d5db;
+  font-size: 15px;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.binding-card input:focus {
+  border-color: #2563eb;
+  box-shadow: 0 0 0 3px rgba(37,99,235,0.2);
+  outline: none;
+}
+
+.preview {
+  margin-top: 8px;
+  padding: 10px;
+  border-radius: 8px;
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  font-size: 15px;
+  color: #111827;
+}
