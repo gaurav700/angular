@@ -1,0 +1,56 @@
+
+<h6>Normal Signals</h6>
+<div class="card">
+    <div class="count">{{counter()}}</div>
+    <div class="buttons">
+      <button class="btn decrement" (click) = 'counter.set(counter()-1)'>Decrement</button>
+      <button class="btn reset" (click) = "counter.set(0)">Reset</button>
+      <button class="btn increment" (click) = "counter.set(counter()+1)">Increment</button>
+    </div>
+</div>
+
+
+
+
+<hr>
+<h6>Multiple data types to signals</h6>
+
+<h2 class="count">{{x()}}</h2>  <h2 class="count">{{y()}}</h2>
+<button class="btn decrement" (click)="x.set('Hello')">update number to String</button>
+<button class="btn decrement" (click)="y.set(0)">update string to number</button>
+
+
+
+
+<hr>
+<h6>Computed Signals</h6>
+
+
+<div class="sum-card" role="group" aria-label="Three number inputs">
+  <div class="sum-row">
+    <label class="sum-label">Sum of all three numbers</label>
+    <div class="sum-value" aria-live="polite">{{ sum() }}</div>
+  </div>
+
+  <div class="inputs">
+    <div class="input-wrap">
+      <label for="n1" class="visually-hidden">Number 1</label>
+      <input id="n1" type="number" inputmode="numeric" step="any" (input)="handleInput($event, 1)" placeholder="0">
+    </div>
+
+    <div class="input-wrap">
+      <label for="n2" class="visually-hidden">Number 2</label>
+      <input id="n2" type="number" inputmode="numeric" step="any" (input)="handleInput($event, 2)" placeholder="0">
+    </div>
+
+    <div class="input-wrap">
+      <label for="n3" class="visually-hidden">Number 3</label>
+      <input id="n3" type="number" inputmode="numeric" step="any" (input)="handleInput($event, 3)" placeholder="0">
+    </div>
+  </div>
+</div>
+
+
+
+
+  

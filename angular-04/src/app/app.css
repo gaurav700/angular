@@ -1,0 +1,161 @@
+.count{
+    background-color: grey;
+    border: 1px solid grey;
+    border-radius: 15px;
+    color: black;
+    text-align: center;
+    padding: 10px;
+    font-size: 30px;
+    width: 100px;
+}
+
+.card{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.btn{
+    border: 1px solid black;
+    border-radius: 50%;
+    color: white;
+    padding: 20px;
+    width: 100px;
+    height: 100px;
+    cursor: pointer;
+    margin: 10px;
+}
+
+.increment{
+    background-color: green;
+}
+
+
+.decrement{
+    background-color: red;
+}
+
+
+.reset{
+    background-color: black;
+}
+
+.buttons{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+:root{
+  --bg: #ffffff;
+  --card-bg: #f7fafc;
+  --accent: #2563eb; /* blue */
+  --muted: #6b7280;
+  --border: #e6edf3;
+  --radius: 12px;
+}
+
+/* Container card */
+.sum-card{
+  max-width: 560px;
+  margin: 18px auto;
+  padding: 18px;
+  background: linear-gradient(180deg,var(--card-bg), #fff);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: 0 6px 20px rgba(37,99,235,0.06);
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+}
+
+/* Top row: label + sum value */
+.sum-row{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.sum-label{
+  font-size: 14px;
+  color: var(--muted);
+  font-weight: 600;
+}
+
+.sum-value{
+  font-weight: 700;
+  font-size: 18px;
+  padding: 6px 12px;
+  border-radius: 999px;
+  background: rgba(37,99,235,0.10);
+  color: var(--accent);
+  min-width: 72px;
+  text-align: center;
+  box-shadow: inset 0 -1px 0 rgba(0,0,0,0.02);
+}
+
+/* Inputs grid */
+.inputs{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+
+/* individual input wrapper for consistent sizing */
+.input-wrap{
+  display: flex;
+  flex-direction: column;
+}
+
+/* the actual inputs */
+input[type="number"]{
+  -moz-appearance: textfield; /* remove spinner in Firefox */
+  appearance: none;
+  width: 100%;
+  padding: 10px 12px;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  font-size: 15px;
+  background: #fff;
+  outline: none;
+  transition: box-shadow .12s ease, border-color .12s ease, transform .06s ease;
+  box-shadow: 0 1px 0 rgba(16,24,40,0.02);
+}
+
+/* remove number input spinners in WebKit */
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button{
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* focus state */
+input[type="number"]:focus{
+  border-color: rgba(37,99,235,0.9);
+  box-shadow: 0 4px 18px rgba(37,99,235,0.12);
+  transform: translateY(-1px);
+}
+
+/* subtle hover */
+input[type="number"]:hover{
+  border-color: #dbeefa;
+}
+
+/* responsive: stack inputs on small screens */
+@media (max-width: 520px){
+  .sum-card{ padding: 14px; }
+  .inputs{ grid-template-columns: 1fr; }
+  .sum-row{ flex-direction: column; align-items: flex-start; gap: 8px; }
+  .sum-value{ min-width: auto; width: 100%; text-align: left; }
+}
+
+/* helper: visually-hidden class for accessible labels */
+.visually-hidden{
+  position: absolute !important;
+  height: 1px; width: 1px;
+  overflow: hidden;
+  clip: rect(1px,1px,1px,1px);
+  white-space: nowrap; /* added for good measure */
+}
