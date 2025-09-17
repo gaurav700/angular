@@ -1,0 +1,10 @@
+:host{display:block}
+.row{margin-bottom:12px}
+label{display:flex;flex-direction:column;font-weight:600}
+input[type=text],input[type=email],input[type=number]{padding:8px;border-radius:8px;border:1px solid #e5e7eb;margin-top:6px}
+input[type=checkbox]{margin-right:8px}
+.error{color:#b91c1c;font-size:13px;margin-top:6px}
+.actions{display:flex;gap:8px;margin-top:14px}
+button{padding:8px 12px;border-radius:8px;border:none;background:var(--accent);color:#fff;cursor:pointer}
+button.muted{background:#eef2ff;color:var(--accent);border:1px solid #c7d2fe}
+.result{margin-top:16px;background:#f8fafc;padding:12px;border-radius:8px}

@@ -1,0 +1,58 @@
+<h2>Reactive form</h2>
+<form [formGroup]="form" (ngSubmit)="onSubmit()" novalidate>
+  <fieldset formGroupName="account">
+    <label>
+      Username
+      <input formControlName="username" />
+    </label>
+    <div class="error" *ngIf="username.invalid && (username.touched || username.dirty)">
+      <div *ngIf="username.errors?.['required']">Username required</div>
+      <div *ngIf="username.errors?.['minlength']">Username must be at least 3 chars</div>
+      <div *ngIf="username.errors?.['cannotContainSpace']">No spaces allowed</div>
+      <div *ngIf="username.errors?.['usernameTaken']">This username is taken</div>
+    </div>
+
+    <label>
+      Email
+      <input formControlName="email" />
+    </label>
+    <div class="error" *ngIf="email.invalid && (email.touched || email.dirty)">
+      <div *ngIf="email.errors?.['required']">Email required</div>
+      <div *ngIf="email.errors?.['email']">Invalid email</div>
+    </div>
+  </fieldset>
+
+  <fieldset formGroupName="passwordGroup">
+    <label>
+      Password
+      <input type="password" formControlName="password" />
+    </label>
+    <label>
+      Confirm Password
+      <input type="password" formControlName="confirmPassword" />
+    </label>
+    <div class="error" *ngIf="form.get('passwordGroup')?.errors?.['passwordsMismatch'] && (password.touched || confirmPassword.touched)">
+      Passwords do not match
+    </div>
+  </fieldset>
+
+  <div formArrayName="phones" class="phones">
+    <label *ngFor="let ctl of phones.controls; let i = index">
+      Phone {{ i + 1 }}
+      <input [formControlName]="i" />
+      <button type="button" class="small muted" (click)="removePhone(i)" *ngIf="phones.length>1">Remove</button>
+    </label>
+    <button type="button" class="small" (click)="addPhone()">Add phone</button>
+  </div>
+
+  <div class="actions">
+    <button type="submit">Submit</button>
+    <button type="button" class="muted" (click)="reset()">Reset</button>
+  </div>
+
+  <div class="result" *ngIf="submitted">
+    <h3>Form value</h3>
+    <pre>{{ form.value | json }}</pre>
+    <h4>Status: {{ form.status }}</h4>
+  </div>
+</form>

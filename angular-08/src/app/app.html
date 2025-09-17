@@ -1,0 +1,13 @@
+<div class="container">
+  <h1>Angular Forms — Template-driven & Reactive</h1>
+
+  <div class="tabs">
+    <button [class.active]="active==='template'" (click)="active='template'">Template-driven</button>
+    <button [class.active]="active==='reactive'" (click)="active='reactive'">Reactive</button>
+  </div>
+
+  <div class="panel">
+    <app-template-form *ngIf="active==='template'"></app-template-form>
+    <app-reactive-form *ngIf="active==='reactive'"></app-reactive-form>
+  </div>
+</div>

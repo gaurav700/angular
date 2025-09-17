@@ -1,0 +1,8 @@
+
+body{font-family:Inter, Roboto, Arial, sans-serif;background:var(--bg);margin:0;padding:20px}
+.container{max-width:900px;margin:0 auto}
+h1{text-align:center;color:var(--accent)}
+.tabs{display:flex;gap:8px;justify-content:center;margin:16px 0}
+.tabs button{padding:8px 14px;border-radius:8px;border:1px solid #e5e7eb;background:transparent;cursor:pointer}
+.tabs button.active{background:var(--accent);color:#fff}
+.panel{background:var(--card);padding:20px;border-radius:12px;box-shadow:0 6px 18px rgba(2,6,23,0.06)}

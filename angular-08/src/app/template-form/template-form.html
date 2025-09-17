@@ -1,0 +1,47 @@
+<h2>Template-driven form</h2>
+<form #f="ngForm" (ngSubmit)="onSubmit(f)" novalidate>
+  <div class="row">
+    <label>
+      Name
+      <input name="name" [(ngModel)]="model.name" #nameCtrl="ngModel" required minlength="3" />
+    </label>
+    <div class="error" *ngIf="nameCtrl.invalid && (nameCtrl.touched || nameCtrl.dirty)">
+      <div *ngIf="nameCtrl.errors?.['required']">Name is required</div>
+      <div *ngIf="nameCtrl.errors?.['minlength']">Minimum 3 characters</div>
+    </div>
+  </div>
+
+  <div class="row">
+    <label>
+      Email
+      <input name="email" [(ngModel)]="model.email" #emailCtrl="ngModel" required email />
+    </label>
+    <div class="error" *ngIf="emailCtrl.invalid && (emailCtrl.touched || emailCtrl.dirty)">
+      <div *ngIf="emailCtrl.errors?.['required']">Email is required</div>
+      <div *ngIf="emailCtrl.errors?.['email']">Invalid email</div>
+    </div>
+  </div>
+
+  <div class="row">
+    <label>
+      Age
+      <input name="age" type="number" [(ngModel)]="model.age" #ageCtrl="ngModel" min="0" />
+    </label>
+  </div>
+
+  <div class="row">
+    <label class="inline">
+      <input name="newsletter" type="checkbox" [(ngModel)]="model.newsletter" /> Subscribe to newsletter
+    </label>
+  </div>
+
+  <div class="actions">
+    <button type="submit" [disabled]="f.invalid">Submit</button>
+    <button type="button" class="muted" (click)="reset(f)">Reset</button>
+  </div>
+
+  <div class="result" *ngIf="submitted">
+    <h3>Submitted value</h3>
+    <pre>{{ lastValue | json }}</pre>
+  </div>
+</form>

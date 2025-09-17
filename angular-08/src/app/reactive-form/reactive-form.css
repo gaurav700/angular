@@ -1,0 +1,12 @@
+:host{display:block}
+label{display:flex;flex-direction:row;align-items:center;gap:12px;margin-bottom:8px}
+input{flex:1;padding:8px;border-radius:8px;border:1px solid #e5e7eb}
+fieldset{border:1px dashed #e6eef8;padding:12px;border-radius:8px;margin-bottom:12px}
+.phones label{display:flex;gap:8px}
+.error{color:#b91c1c;font-size:13px}
+.actions{display:flex;gap:8px;margin-top:12px}
+button{padding:8px 10px;border-radius:8px;border:none;background:var(--accent);color:#fff}
+button.muted{background:#eef2ff;color:var(--accent);border:1px solid #c7d2fe}
+button.small{padding:6px 8px;font-size:13px}
+button.small.muted{background:transparent;border:1px solid #f1f5f9;color:#374151}
+.result{margin-top:12px;background:#f8fafc;padding:12px;border-radius:8px}
